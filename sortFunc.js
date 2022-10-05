@@ -36,12 +36,12 @@ const sortFunc = (arr, sortType, sortBy) => {
 };
 
 const testSortArr = [
-  { name: "Valera", age: 20, workHours: 8 },
-  { name: "Ghena", age: 18, workHours: 10 },
-  { name: "Alex", age: 30, workHours: 4 },
+  { name: "Valera", age: 20, workHours: 8, surname: "Petrov" },
+  { name: "Ghena", age: 18, workHours: 10, surname: "Matrov" },
+  { name: "Alex", age: 30, workHours: 4, surname: "Fetrov" },
 ];
 
-console.log("Sort by number dsc: ", sortFunc(testSortArr, "dsc", "age"));
+console.log("Sort by number dsc: ", sortFunc(testSortArr, "dsc", "workHours"));
 console.log("Sort by number asc: ", sortFunc(testSortArr, "asc", "age"));
-console.log("Sort by string asc: ", sortFunc(testSortArr, "asc", "name"));
+console.log("Sort by string asc: ", sortFunc(testSortArr, "asc", "surname"));
 console.log("Sort by string dsc: ", sortFunc(testSortArr, "dsc", "name"));
