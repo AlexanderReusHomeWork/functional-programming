@@ -1,36 +1,35 @@
 //Sort func [{name: 'name', age:18}, {name: 'name', age:18}] by name/age (asc/dsc)
 const sortFunc = (arr, sortType, sortBy) => {
-  if (arr && sortType === "dsc" && typeof arr[0][sortBy] === "number") {
-    return [...arr.sort((a, b) => b[sortBy] - a[sortBy])];
+  if (arr && typeof arr[0][sortBy] === "number") {
+    return sortType === "dsc"
+      ? [...arr.sort((a, b) => b[sortBy] - a[sortBy])]
+      : [...arr.sort((a, b) => a[sortBy] - b[sortBy])];
   }
-  if (arr && sortType === "asc" && typeof arr[0][sortBy] === "number") {
-    return [...arr.sort((a, b) => a[sortBy] - b[sortBy])];
-  }
-  if (arr && sortType === "dsc" && typeof arr[0][sortBy] === "string") {
-    return [
-      ...arr.sort((a, b) => {
-        if (a[sortBy] < b[sortBy]) {
-          return 1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return -1;
-        }
-        return 0;
-      }),
-    ];
-  }
-  if (arr && sortType === "asc" && typeof arr[0][sortBy] === "string") {
-    return [
-      ...arr.sort((a, b) => {
-        if (a[sortBy] < b[sortBy]) {
-          return -1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return 1;
-        }
-        return 0;
-      }),
-    ];
+
+  if (arr && typeof arr[0][sortBy] === "string") {
+    return sortType === "dsc"
+      ? [
+          ...arr.sort((a, b) => {
+            if (a[sortBy] < b[sortBy]) {
+              return 1;
+            }
+            if (a[sortBy] > b[sortBy]) {
+              return -1;
+            }
+            return 0;
+          }),
+        ]
+      : [
+          ...arr.sort((a, b) => {
+            if (a[sortBy] < b[sortBy]) {
+              return -1;
+            }
+            if (a[sortBy] > b[sortBy]) {
+              return 1;
+            }
+            return 0;
+          }),
+        ];
   }
   alert("Enter all needed arguments correctly");
 };
