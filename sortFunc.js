@@ -1,12 +1,6 @@
 //Sort func [{name: 'name', age:18}, {name: 'name', age:18}] by name/age (asc/dsc)
 const sortFunc = (arr, sortType, sortBy) => {
-  if (arr && typeof arr[0][sortBy] === "number") {
-    return sortType === "dsc"
-      ? [...arr.sort((a, b) => b[sortBy] - a[sortBy])]
-      : [...arr.sort((a, b) => a[sortBy] - b[sortBy])];
-  }
-
-  if (arr && typeof arr[0][sortBy] === "string") {
+  if (arr) {
     return sortType === "dsc"
       ? [
           ...arr.sort((a, b) => {
