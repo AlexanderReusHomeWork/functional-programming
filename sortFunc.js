@@ -1,31 +1,31 @@
 //Sort func [{name: 'name', age:18}, {name: 'name', age:18}] by name/age (asc/dsc)
 const sortFunc = (arr, sortType, sortBy) => {
-  if (arr && sortType === "dsc" && sortBy === "age") {
-    return [...arr.sort((a, b) => b.age - a.age)];
+  if (arr && sortType === "dsc" && typeof arr[0][sortBy] === "number") {
+    return [...arr.sort((a, b) => b[sortBy] - a[sortBy])];
   }
-  if (arr && sortType === "asc" && sortBy === "age") {
-    return [...arr.sort((a, b) => a.age - b.age)];
+  if (arr && sortType === "asc" && typeof arr[0][sortBy] === "number") {
+    return [...arr.sort((a, b) => a[sortBy] - b[sortBy])];
   }
-  if (arr && sortType === "dsc" && sortBy === "name") {
+  if (arr && sortType === "dsc" && typeof arr[0][sortBy] === "string") {
     return [
       ...arr.sort((a, b) => {
-        if (a.name < b.name) {
+        if (a[sortBy] < b[sortBy]) {
           return 1;
         }
-        if (a.name > b.name) {
+        if (a[sortBy] > b[sortBy]) {
           return -1;
         }
         return 0;
       }),
     ];
   }
-  if (arr && sortType === "asc" && sortBy === "name") {
+  if (arr && sortType === "asc" && typeof arr[0][sortBy] === "string") {
     return [
       ...arr.sort((a, b) => {
-        if (a.name < b.name) {
+        if (a[sortBy] < b[sortBy]) {
           return -1;
         }
-        if (a.name > b.name) {
+        if (a[sortBy] > b[sortBy]) {
           return 1;
         }
         return 0;
@@ -36,12 +36,12 @@ const sortFunc = (arr, sortType, sortBy) => {
 };
 
 const testSortArr = [
-  { name: "Valera", age: 20 },
-  { name: "Ghena", age: 18 },
-  { name: "Alex", age: 30 },
+  { name: "Valera", age: 20, workHours: 8 },
+  { name: "Ghena", age: 18, workHours: 10 },
+  { name: "Alex", age: 30, workHours: 4 },
 ];
 
-console.log("Sort by age dsc: ", sortFunc(testSortArr, "dsc", "age"));
-console.log("Sort by age asc: ", sortFunc(testSortArr, "asc", "age"));
-console.log("Sort by name asc: ", sortFunc(testSortArr, "asc", "name"));
-console.log("Sort by name dsc: ", sortFunc(testSortArr, "dsc", "name"));
+console.log("Sort by number dsc: ", sortFunc(testSortArr, "dsc", "age"));
+console.log("Sort by number asc: ", sortFunc(testSortArr, "asc", "age"));
+console.log("Sort by string asc: ", sortFunc(testSortArr, "asc", "name"));
+console.log("Sort by string dsc: ", sortFunc(testSortArr, "dsc", "name"));
